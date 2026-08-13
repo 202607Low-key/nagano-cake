@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
-  devise_for :users
+  devise_for :customers
+
+  # 管理者用
+  namespace :admin do
+    get "homes/top"
+    resource :session, only: [:new, :create, :destroy]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
