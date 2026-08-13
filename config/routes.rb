@@ -1,7 +1,32 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :customers, controllers: {
+    sessions: 'public/sessions',
+    registrations: 'public/registrations'
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  scope module: 'public' do
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update, :destroy] do
+      member do
+        get 'confirm'
+      end
+    end
+    resources :cart_items, only: [:index, :update, :create, :destroy] do
+      collection do
+        delete 'all_destroy'
+      end
+    end
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        get 'confirm'
+        get 'complete'
+      end
+    end
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
