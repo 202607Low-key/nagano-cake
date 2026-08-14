@@ -1,0 +1,14 @@
+<header class="border-bottom mb-4">
+  <div class="container d-flex justify-content-between aling-items-center py-3">
+    <%= link_to admin_root_path, class: "border px-4 py-2 text-decoration-none text-dark fs-4" do %>
+      ながのCAKE
+    <% end %>
+    <nav class="d-flex align-items-center gap-2">
+      <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary" %>
+      <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-socondary" %>
+      <%= link_to "注文履歴一覧", admin_orders_path, class: "btn btn-outline-socondary" %>
+      <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-socondary" %>
+      <%= link_to "ログアウト", admin_session_path, data: { turbo_method: :delete } class: "btn btn-outline-socondary" %>
+    </nav>
+  </div>
+</header>

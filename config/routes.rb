@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     get "homes/top"
-    resource :session, only: [:new, :create, :destroy]
+    resource :session, only: [:new, :create, :destroy], path: "", path_names: { new: "sign_in" }
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
