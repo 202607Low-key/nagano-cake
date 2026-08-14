@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
-  devise_for :customers
 
   # 管理者用
   namespace :admin do
-    get "homes/top"
+    root to: "homes#top"
     resource :session, only: [:new, :create, :destroy], path: "", path_names: { new: "sign_in" }
+    resources :items, only: [:new, :create, :show, :edit, :update]
+    resources :genres, only: [:create, :index, :edit, :update]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

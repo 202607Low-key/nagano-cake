@@ -1,0 +1,19 @@
+<% form_with model: genre, url: url, method: method do |f| %>
+  <% if genre.errors.any? %>
+    <div class="text-center mb-2" %>
+      <% genre.errors.full_messages.each do |msg| %>
+        <p class="mb-0"><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="row mb-4 align-items-center">
+    <%= f.label :name, "ジャンル名", class: "col-sm-2 col-form-label fw-bold" %>
+    <div class="col-sm-4">
+      <%= f.text_field :name, plaseholder: "ジャンル名", class: "form-control" %>
+    </div>
+    <div class="col-sm-3">
+      <%= f.submit submit_label, class: "btn btn-success px-4" %>
+    </div>
+  </div>
+<% end %>
