@@ -1,4 +1,2 @@
-module Admin
-  class ItemsController < Admin::ApplicationController
-  end
+class Admin::ItemsController < Admin::ApplicationController
 end

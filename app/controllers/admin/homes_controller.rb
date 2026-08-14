@@ -1,6 +1,4 @@
-module Admin
-  class HomesController < ApplicationController
-    def top
-    end
+class Admin::HomesController < Admin::ApplicationController
+  def top
   end
 end

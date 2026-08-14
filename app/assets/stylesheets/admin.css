@@ -1,0 +1,19 @@
+/* app/assets/stylesheets/admin.css など */
+.header-container {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-nav-btn {
+  width: 75px;
+  font-size: 12px;
+}
+
+.genre-name-col {
+  width: 60%;
+}
+
+.genre-action-col {
+  width: 40%;
+}
