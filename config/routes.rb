@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :customers, controllers: {
-    sessions: 'public/sessions',
-    registrations: 'public/registrations'
-  }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
   scope module: 'public' do
+
+    resource :session, only: [ :new, :create, :destroy ]
+    resources :passwords, param: :token, only: [ :new, :create, :edit, :update ]
+    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
