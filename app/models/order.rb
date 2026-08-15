@@ -1,3 +1,3 @@
 class Order < ApplicationRecord
-  belongs_to :customer_id
-end
+  belongs_to :customer
+  has_many :order_details, dependent: :destroy
