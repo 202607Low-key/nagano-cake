@@ -6,26 +6,26 @@
     <% end %>
   </div>
 
-  <table class="table">
+  <table class="table border border-start-0 border-end-0">
     <thead>
       <tr>
-        <th class="bg-light">商品ID</th>
-        <th class="bg-light">商品名</th>
-        <th class="bg-light">税抜価格</th>
-        <th class="bg-light">ジャンル</th>
-        <th class="bg-light">ステータス</th>
+        <th class="bg-light border-bottom-0">商品ID</th>
+        <th class="bg-light border-bottom-0">商品名</th>
+        <th class="bg-light border-bottom-0">税抜価格</th>
+        <th class="bg-light border-bottom-0">ジャンル</th>
+        <th class="bg-light border-bottom-0">ステータス</th>
       </tr>
     </thead>
     <tbody>
       <% @items.each do |item| %>
         <tr>
-          <td class="align-middle"><%= item.id %></td>
-          <td class="align-middle"><%= link_to item.name, admin_item_path(item) %></td>
-          <td class="align-middle"><%= number_with_delimiter(item.price) %></td>
-          <td class="align-middle"><%= item.genre.name %></td>
-          <td class="align-middle">
+          <td class="align-middle border-bottom-0"><%= item.id %></td>
+          <td class="align-middle border-bottom-0"><%= link_to item.name, admin_item_path(item), class: "text-black" %></td>
+          <td class="align-middle border-bottom-0"><%= number_with_delimiter(item.price) %></td>
+          <td class="align-middle border-bottom-0"><%= item.genre.name %></td>
+          <td class="align-middle border-bottom-0">
             <% if item.is_active? %>
-              <span class="text-success fw-bold>販売中</span>
+              <span class="text-success fw-bold">販売中</span>
             <% else %>
               <span class="text-muted">販売停止中</span>
             <% end %>
@@ -34,4 +34,7 @@
       <% end %>
     </tbody>
   </table>
+  <div class="d-flex justify-content-center mt-4">
+    <%= paginate @items %>
+  </div>
 </div>
