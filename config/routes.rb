@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     resource :session, only: [:new, :create, :destroy], path: "", path_names: { new: "sign_in" }
-    resources :items, only: [:new, :create, :show, :edit, :update]
+    resources :items, only: [:new, :create, :show, :edit, :update, :index]
     resources :genres, only: [:create, :index, :edit, :update]
     resources :customers
     resources :orders
