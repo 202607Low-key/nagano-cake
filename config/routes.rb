@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
+    get 'customers/sign_up', to: 'registrations#new'
+    post 'customers', to: 'registrations#create'
     resources :customers, only: [:show, :edit, :update, :destroy] do
       member do
         get 'confirm'
