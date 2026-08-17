@@ -1,7 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  customer_id: 1
   postal_code: MyString
   address: MyString
   name: MyString
@@ -9,9 +8,9 @@ one:
   total_payment: 1
   payment_method: 1
   status: 1
+  customer: one
 
 two:
-  customer_id: 1
   postal_code: MyString
   address: MyString
   name: MyString
@@ -19,3 +18,4 @@ two:
   total_payment: 1
   payment_method: 1
   status: 1
+  customer: two
