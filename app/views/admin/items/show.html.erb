@@ -1,0 +1,41 @@
+<div class="container">
+  <h2 class="bg-body-secondary rounded-1 px-3 py-1 my-5 d-inline-block fs-4">商品一覧</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @item.display_image(300,300), class: "img-fluid" %>
+    </div>
+
+    <div class="col-md-6">
+      <div class="row mb-3">
+        <div class="col-md-3 small">商品名</div>
+        <div class="col-md-9"><%= @item.name %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 small">商品説明</div>
+        <div class="col-md-9"><%= @item.introduction %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 small">ジャンル</div>
+        <div class="col-md-9"><%= @item.genre.name %></div>
+      </div>
+      <div class="row mb-3 align-items-center">
+        <div class="col-md-3 small">税抜価格<br>(税込価格)</div>
+        <div class="col-md-9"><%= number_with_delimiter((@item.price * 1.1).floor) %>（<%= number_with_delimiter(@item.price) %>）円</div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-md-3 small">販売ステータス</div>
+        <div class="col-md-9">
+          <% if @item.is_active? %>
+            <span class="text-success fw-bold">販売中</span>
+          <% else %>
+            <span class="text-muted">販売停止中</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success px-2 col-6 col-md-4 col-lg-2" %>
+      </div>
+    </div>
+  </div>
+</div>
