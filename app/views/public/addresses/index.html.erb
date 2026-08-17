@@ -1,2 +1,16 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<% @addresses.each do |address| %>
+  <p><%= address.name %> / <%= address.postal_code %> / <%= address.address %></p>
+<% end %>
+
+<%= form_with model: Current.customer.addresses.new do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :postal_code %>
+  <%= form.text_field :postal_code %>
+
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+
+  <%= form.submit "登録" %>
+<% end %>
