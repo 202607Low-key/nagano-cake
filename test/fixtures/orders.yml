@@ -7,7 +7,8 @@ one:
   shipping_cost: 1
   total_payment: 1
   payment_method: 1
-  customer_id: one
+  status: 1
+  customer: one
 
 two:
   postal_code: MyString
@@ -16,4 +17,5 @@ two:
   shipping_cost: 1
   total_payment: 1
   payment_method: 1
-  customer_id: two
+  status: 1
+  customer: two

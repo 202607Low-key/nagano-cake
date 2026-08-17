@@ -1,6 +1,33 @@
 Rails.application.routes.draw do
-  resource :session
-  resources :passwords, param: :token
+
+  scope module: 'public' do
+    resource :session, only: [ :new, :create, :destroy ]
+    resources :passwords, param: :token, only: [ :new, :create, :edit, :update ]
+    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+    resources :items, only: [:index, :show]
+    get 'customers/sign_up', to: 'registrations#new'
+    post 'customers', to: 'registrations#create'
+    resources :customers, only: [:show, :edit, :update, :destroy] do
+      member do
+        get 'confirm'
+      end
+    end
+    resources :cart_items, only: [:index, :update, :create, :destroy] do
+      collection do
+        delete 'all_destroy'
+      end
+    end
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        get 'confirm'
+        get 'complete'
+      end
+    end
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
 
   # 管理者用
   namespace :admin do

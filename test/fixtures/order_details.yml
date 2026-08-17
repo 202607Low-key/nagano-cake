@@ -4,12 +4,12 @@ one:
   price: 1
   amount: 1
   making_status: 1
-  order_id: one
-  item_id: one
+  order: one
+  item: one
 
 two:
   price: 1
   amount: 1
   making_status: 1
-  order_id: two
-  item_id: two
+  order: two
+  item: two
