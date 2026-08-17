@@ -1,50 +1,51 @@
-<%= form_with model :item, url: url, method: method do |f| %>
+<%= form_with model: item, url: url, method: method do |f| %>
   <% if item.errors.any? %>
     <div class="text-danger mb-2">
       <% item.errors.full_messages.each do |msg| %>
         <p class="mb-0"><%= msg %></p>
       <% end %>
     </div>
+  <% end %>
 
     <div class="row mb-3 align-items-center">
-      <%= f.label :image, "商品画像", class: "col-2 col-form-label fw-bold" %>
-      <div class="col-4">
-        <%= f.file_filed :image, class: "form-control" %>
+      <%= f.label :image, "商品画像", class: "col-md-3 col-form-label fw-bold" %>
+      <div class="col-md-7">
+        <%= f.file_field :image, class: "form-control" %>
       </div> 
     </div>
 
     <div class="row mb-3 align-items-center">
-      <%= f.label :name, "商品名", class: "col-2 col-form-label fw-bold" %>
-      <div class="col-4">
-        <%= f.text_filed :name, placeholder: "商品名", class: "form-control" %>
+      <%= f.label :name, "商品名", class: "col-md-3 col-form-label fw-bold" %>
+      <div class="col-md-7">
+        <%= f.text_field :name, placeholder: "商品名", class: "form-control" %>
       </div> 
     </div>
 
     <div class="row mb-3 align-items-center">
-      <%= f.label :introduction, "商品説明", class: "col-2 col-form-label fw-bold" %>
-      <div class="col-4">
+      <%= f.label :introduction, "商品説明", class: "col-md-3 col-form-label fw-bold" %>
+      <div class="col-md-7">
         <%= f.text_area :introduction, rows: 6, placeholder: "ここに説明文を記述します", class: "form-control" %>
       </div> 
     </div>
 
     <div class="row mb-3 align-items-center">
-      <%= f.label :genre_id, "ジャンル", class: "col-2 col-form-label fw-bold" %>
-      <div class="col-4">
-        <%= f.corection_select :genre_id, Genre.all :id, :name, { prompt: "選択してください" }, { class: "form-select" } %>
+      <%= f.label :genre_id, "ジャンル", class: "col-md-3 col-form-label fw-bold" %>
+      <div class="col-md-7">
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: "-- 選択してください --" }, { class: "form-select" } %>
       </div> 
     </div>
 
     <div class="row mb-3 align-items-center">
-      <%= f.label :price, "税抜価格", class: "col-2 col-form-label fw-bold" %>
-      <div class="col-4">
-        <%= f.number_filed :price, placeholder: "1000", class: "form-control" %>
+      <%= f.label :price, "税抜価格", class: "col-md-3 col-form-label fw-bold" %>
+      <div class="col-11 col-md-7">
+        <%= f.number_field :price, placeholder: "1000", class: "form-control" %>
       </div>
       <div class="col-auto">円</div>
     </div>
 
     <div class="row mb-3 align-items-center">
-      <%= f.label :is_active, "販売ステータス", class: "col-2 col-form-label fw-bold" %>
-      <div class="col-4">
+      <%= f.label :is_active, "販売ステータス", class: "col-md-3 col-form-label fw-bold" %>
+      <div class="col-md-7">
         <div class="form-check form-check-inline">
           <%= f.radio_button :is_active, true, class: "form-check-input" %>
           <%= f.label :is_active_true, "販売中", class: "form-check-label" %>
@@ -55,6 +56,7 @@
         </div>
       </div> 
     </div>
-
-    <%= f.submit submit_label, class="btn btn-success px-5" %>
+    <div class="row justify-content-center">
+      <%= f.submit submit_label, class: "btn btn-success px-2 col-6 col-md-4 col-lg-2" %>
+    </div>
 <% end %>
