@@ -2,7 +2,9 @@
   <% if item.errors.any? %>
     <div class="text-danger mb-2">
       <% item.errors.full_messages.each do |msg| %>
-        <p class="mb-0"><%= msg %></p>
+        <ul>
+          <li class="mb-2"><%= msg %></li>
+        </ul>
       <% end %>
     </div>
   <% end %>

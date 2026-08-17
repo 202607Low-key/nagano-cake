@@ -1,8 +1,10 @@
 <%= form_with model: genre, url: url, method: method do |f| %>
   <% if genre.errors.any? %>
-    <div class="text-center mb-2" >
+    <div class="mb-2" >
       <% genre.errors.full_messages.each do |msg| %>
-        <p class="mb-0"><%= msg %></p>
+        <ul>
+          <li class="mb-2"><%= msg %></li>
+        </ul>
       <% end %>
     </div>
   <% end %>
