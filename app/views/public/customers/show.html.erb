@@ -1,2 +1,4 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<p>お名前: <%= @customer.last_name %> <%= @customer.first_name %></p>
+<p>メールアドレス: <%= @customer.email_address %></p>
+<%= link_to "登録情報編集", customers_information_edit_path %>
+<%= link_to "退会はこちら", customers_unsubscribe_path %>

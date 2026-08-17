@@ -10,11 +10,13 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     get 'customers/sign_up', to: 'registrations#new'
     post 'customers', to: 'registrations#create'
-    resources :customers, only: [:show, :edit, :update, :destroy] do
-      member do
-        get 'confirm'
-      end
-    end
+
+    get 'customers/my_page', to: 'customers#show'
+    get 'customers/information/edit', to: 'customers#edit'
+    patch 'customers/information', to: 'customers#update'
+    get 'customers/unsubscribe', to: 'customers#unsubscribe'
+    patch 'customers/withdraw', to: 'customers#withdraw'
+
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection do
         delete 'all_destroy'

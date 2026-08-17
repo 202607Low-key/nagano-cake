@@ -1,0 +1,3 @@
+<p>本当に退会しますか？ <%= @customer.last_name %>さん</p>
+<%= button_to "退会する", customers_withdraw_path, method: :patch %>
+<%= link_to "キャンセル", customers_my_page_path %>

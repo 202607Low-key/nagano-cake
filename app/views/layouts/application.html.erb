@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,7 +5,14 @@
   </head>
 
   <body>
+    <% if notice %>
+      <p style="color: green;"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p style="color: red;"><%= alert %></p>
+    <% end %>
+
     <%= yield %>
-  <%= render "shared/scripts" %>
+    <%= render "shared/scripts" %>
   </body>
 </html>
