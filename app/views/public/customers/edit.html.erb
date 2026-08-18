@@ -1,2 +1,29 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<%= form_with model: @customer, url: customers_information_path, method: :patch do |form| %>
+  
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name %>
+
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name %>
+
+  <%= form.label :last_name_kana %>
+  <%= form.text_field :last_name_kana %>
+
+  <%= form.label :first_name_kana %>
+  <%= form.text_field :first_name_kana %>
+
+  <%= form.label :email_address %>
+  <%= form.email_field :email_address %>
+
+  <%= form.label :telephone_number %>
+  <%= form.text_field :telephone_number %>
+
+  <%= form.label :postal_code %>
+  <%= form.text_field :postal_code %>
+
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+
+  <%= form.submit "更新" %>
+
+<% end %>
