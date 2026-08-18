@@ -40,7 +40,8 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :show, :edit, :update, :index]
     resources :genres, only: [:create, :index, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders
+    resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
