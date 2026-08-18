@@ -1,5 +1,7 @@
 <% @addresses.each do |address| %>
   <p><%= address.name %> / <%= address.postal_code %> / <%= address.address %></p>
+  <%= link_to "編集", edit_address_path(address) %>
+  <%= button_to "削除", address_path(address), method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
 <% end %>
 
 <%= form_with model: Current.customer.addresses.new do |form| %>
