@@ -33,11 +33,15 @@ Rails.application.routes.draw do
 
   # 管理者用
   namespace :admin do
+    get "customers/index"
+    get "customers/show"
+    get "customers/edit"
+    get "customers/update"
     root to: "homes#top"
     resource :session, only: [:new, :create, :destroy], path: "", path_names: { new: "sign_in" }
     resources :items, only: [:new, :create, :show, :edit, :update, :index]
     resources :genres, only: [:create, :index, :edit, :update]
-    resources :customers
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :orders
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
