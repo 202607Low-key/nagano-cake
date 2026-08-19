@@ -1,6 +1,6 @@
 class Admin::OrdersController < Admin::ApplicationController
   def index
-    @orders = Order.includes(:customer).order(created_at: :desc).page(params[:page])
+    @orders = Order.includes(:customer, :order_details).order(created_at: :desc).page(params[:page])
   end
 
   def show

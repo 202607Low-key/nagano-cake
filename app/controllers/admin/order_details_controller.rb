@@ -1,6 +1,6 @@
 class Admin::OrderDetailsController < Admin::ApplicationController
   def update
-    @order_detail = OrderDetails.find(params[:id])
+    @order_detail = OrderDetail.find(params[:id])
     if @order_detail.update(order_detail_params)
       redirect_to admin_order_path(@order_detail.order), notice: "製作ステータスを更新しました。"
     else

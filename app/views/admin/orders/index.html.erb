@@ -1,0 +1,27 @@
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 d-inline-block fs-4">注文履歴一覧</h2>
+
+  <table class="table border border-start-0 border-end-0">
+    <thead>
+      <tr>
+        <th class="bg-light">購入日時</th>
+        <th class="bg-light">購入者</th>
+        <th class="bg-light">注文個数</th>
+        <th class="bg-light">注文ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td class="align-middle"><%= link_to l(order.created_at, format: :long), admin_order_path(order), class: "text-black" %></td>
+          <td class="align-middle"><%= order.customer.first_name %><%= order.customer.last_name %></td>
+          <td class="align-middle"><%= order.order_details.sum(:amount) %></td>
+          <td class="align-middle"><%= order.status_i18n %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center mt-4">
+    <%= paginate @orders %>
+  </div>
+</div>
