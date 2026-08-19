@@ -15,4 +15,6 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :address, presence: true
   validates :telephone_number, presence: true
+
+  paginates_per 10
 end

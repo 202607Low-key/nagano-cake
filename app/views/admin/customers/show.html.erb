@@ -1,0 +1,52 @@
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 d-inline-block fs-4">
+    <%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細
+  </h2>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row mb-3">
+        <div class="col-md-3 small">会員ID</div>
+        <div class="col-md-9"><%= @customer.id %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 small">氏名</div>
+        <div class="col-md-9"><%= @customer.first_name %> <%= @customer.last_name %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 small">フリガナ</div>
+        <div class="col-md-9"><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 small">郵便番号</div>
+        <div class="col-md-9"><%= @customer.postal_code %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 small">住所</div>
+        <div class="col-md-9"><%= @customer.address %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 small">電話番号</div>
+        <div class="col-md-9"><%= @customer.telephone_number %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 small">メールアドレス</div>
+        <div class="col-md-9"><%= @customer.email_address %></div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-md-3 small">会員ステータス</div>
+        <div class="col-md-9">
+          <% if @customer.is_active? %>
+            <span class="text-success fw-bold">有効</span>
+          <% else %>
+            <span class="text-muted">退会</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success px-2 col-8 col-md-2 offset-md-2 mb-4" %>
+        <%= link_to "注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary px-2 col-8 col-md-4 mb-4" %>
+      </div>
+    </div>
+  </div>
+</div>
