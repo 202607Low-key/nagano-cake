@@ -36,3 +36,12 @@
 .genre-action-col {
   width: 40%;
 }
+
+.order-status-col {
+  max-width: 220px;
+}
+
+.order-status-select {
+  max-width: 130px;
+  flex: none;
+}
