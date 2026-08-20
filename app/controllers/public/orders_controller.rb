@@ -1,4 +1,4 @@
-class Public::OrdersController < ApplicationController
+class Public::OrdersController < PublicApplicationController
   def new
   end
 
@@ -12,6 +12,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @order = current.customer.orders.order(created_at: :desc).page(params[:page])
   end
 
   def show

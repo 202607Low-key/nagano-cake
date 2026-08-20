@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "shared/head" %>
+  </head>
+
+  <body>
+    <% if authenticated_customer? %>
+      <%= render "public/shared/header" %>
+    <% else %>
+      <%= render "shared/header_guest" %>
+    <% end %>
+
+    <div class="container-fluid header-container">
+      <%= render "shared/flash" %>
+    </div>
+
+    <%= yield %>
+    <%= render "shared/scripts" %>
+  </body>
+</html>

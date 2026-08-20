@@ -1,0 +1,26 @@
+<header class="border-bottom mb-4">
+  <div class="container-fluid d-flex justify-content-between align-items-center pt-3 pb-2 header-container">
+    <%= link_to root_path, class: "border px-4 py-2 text-decoration-none text-dark fs-4" do %>
+      ながのCAKE
+    <% end %>
+    <div>
+      <p>ようこそ、<%= current_customer.first_name %>さん!</p>
+
+      <nav class="d-flex align-items-center gap-4 mb-3">
+        <%= link_to "マイページ", customers_path(customer), class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
+        <%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
+        <%= link_to "カート", genres_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
+        <%= link_to "ログアウト", session_path, data: { turbo_method: :delete }, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
+      </nav>
+
+      <%= form_with url: "#", method: :get, class: "ms-auto header-search" do %>
+        <div class="input-group">
+          <%= text_field_tag :query, nil, class: "form-control rounded-0 p-1 border-end-0", placeholder: "Search" %>
+          <button class="search-btn rounded-0" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>
