@@ -1,0 +1,36 @@
+ja:
+  enums:
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+      status:
+        pending_payment: "入金待ち"
+        payment_confirmed: "入金確認"
+        in_production: "製作中"
+        preparing_shipment: "発送準備中"
+        shipped: "発送済み"
+    order_detail:
+      making_status:
+        not_startable: "着手不可"
+        waiting_to_make: "製作待ち"
+        in_production: "製作中"
+        completed: "製作完了"
+
+  activerecord:
+    attributes:
+      customer:
+        email_address: "メールアドレス"
+        password: "パスワード"
+        last_name: "姓"
+        first_name: "名"
+        last_name_kana: "セイ"
+        first_name_kana: "メイ"
+        postal_code: "郵便番号"
+        address: "住所"
+        telephone_number: "電話番号"
+      order:
+        status: "注文ステータス"
+        payment_method: "支払方法"
+      order_detail:
+        making_status: "製作ステータス"

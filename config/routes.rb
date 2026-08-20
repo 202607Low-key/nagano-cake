@@ -37,12 +37,13 @@ Rails.application.routes.draw do
     get "customers/show"
     get "customers/edit"
     get "customers/update"
-    root to: "homes#top"
-    resource :session, only: [:new, :create, :destroy], path: "", path_names: { new: "sign_in" }
+    root to: "orders#index"
+    resource :session, only: [:new, :create, :destroy], path: "", path_names: { new: "sign_in", create: "sign_in", destroy: "sign_out" }
     resources :items, only: [:new, :create, :show, :edit, :update, :index]
     resources :genres, only: [:create, :index, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders
+    resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
