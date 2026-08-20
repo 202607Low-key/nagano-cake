@@ -1,20 +1,23 @@
-class Public::OrdersController < PublicApplicationController
-  def new
-  end
+module Public
+  class OrdersController < Public::ApplicationController
+    def new
+    end
 
-  def confirm
-  end
+    def confirm
+    end
 
-  def complete
-  end
+    def complete
+    end
 
-  def create
-  end
+    def create
+    end
 
-  def index
-    @order = current.customer.orders.order(created_at: :desc).page(params[:page])
-  end
+    def index
+      @orders = current_customer.orders.order(created_at: :desc).page(params[:page])
+    end
 
-  def show
+    def show
+      @order = current_customer.orders.find(parms[:id])
+    end
   end
 end
