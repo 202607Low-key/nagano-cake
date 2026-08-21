@@ -18,12 +18,23 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
+    @cart_item = Current.customer.cart_items.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      redirect_to cart_items_path
+    else
+      render :index
+    end
   end
 
   def destroy
+    @cart_item = Current.customer.cart_items.find(params[:id])
+    @cart_item.destroy
+    redirect_to cart_items_path
   end
 
   def all_destroy
+    Current.customer.cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
   private
