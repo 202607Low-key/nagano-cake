@@ -17,7 +17,7 @@ module Public
     end
 
     def show
-      @order = current_customer.orders.find(parms[:id])
+      @order = current_customer.orders.find(params[:id])
     end
   end
 end
