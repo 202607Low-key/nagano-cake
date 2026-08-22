@@ -1,8 +1,14 @@
-<h1>Forgot your password?</h1>
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 my-5 d-inline-block fs-4">パスワード再設定</h2>
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-
-<%= form_with url: passwords_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.submit "Email reset instructions" %>
-<% end %>
+  <div class="row justify-content-center">
+    <div class="col-8 offset-1">
+      <%= form_with url: passwords_path do |form| %>
+        <div class="mb-3">
+          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "メールアドレスを入力してください", value: params[:email_address], class: "form-control px-0" %>
+        </div>
+        <%= form.submit "パスワード再設定", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

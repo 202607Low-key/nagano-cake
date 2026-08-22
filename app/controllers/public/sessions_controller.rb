@@ -12,13 +12,13 @@ class Public::SessionsController < Public::ApplicationController
       start_new_session_for customer
       redirect_to after_authentication_url
     else
-      redirect_to new_session_path, alert: "Try another email address or password."
+      redirect_to customers_sign_in_path, alert: "Try another email address or password."
     end
   end
 
   def destroy
     terminate_session
-    redirect_to new_session_path
+    redirect_to customers_sign_in_path
   end
 
   private
