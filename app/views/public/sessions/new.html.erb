@@ -1,11 +1,30 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
-
-<%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
-<% end %>
-<br>
-
-<%= link_to "Forgot password?", new_password_path %>
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 my-5 d-inline-block fs-4">ログイン</h2>
+  
+  <div class="row justify-content-center">
+    <div class="col-lg-7 ms-auto">
+      <span class="bg-body-secondary rounded-0 px-5 py-1 d-inline-block mb-4">会員の方はこちらからログイン</span>
+      <%= form_with url: session_path do |form| %>
+        <div class="row mb-3 align-items-center offset-lg-1">
+          <%= form.label :email_address, "メールアドレス", class: "col-lg-2 col-form-label" %>
+          <div class="col-9 col-md-7">
+            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "sample@example.com", value: params[:email_address], class: "form-control px-0" %>
+          </div>
+        </div>
+        <div class="row mb-4 align-items-center offset-lg-1">
+          <%= form.label :password, "パスワード", class: "col-lg-2 col-form-label" %>
+          <div class="col-9 col-md-7">
+            <%= form.password_field :password, required: true, autocomplete: "current-password", maxlength: 72, class: "form-control px-0" %>
+          </div>
+        </div>
+        <div class="row justify-content-lg-center">
+          <div class="col-5 col-lg-4 offset-3 offset-lg-1">
+            <%= form.submit "ログイン", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    <br>
+    <p class="bg-body-secondary">会員登録がお済みでない方</p>
+    <%= link_to "こちら", new_password_path %><span>　から新規登録を行ってください。</span>
+  </div>
+</div>
