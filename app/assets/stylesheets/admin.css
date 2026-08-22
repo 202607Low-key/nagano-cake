@@ -29,6 +29,10 @@
   background-color: #e9ecef;
 }
 
+.about-image {
+  max-width: 400px;
+}
+
 .genre-name-col {
   width: 60%;
 }
