@@ -14,7 +14,7 @@
       <% @orders.each do |order| %>
         <tr>
           <td class="align-middle"><%= link_to l(order.created_at, format: :long), admin_order_path(order), class: "text-black" %></td>
-          <td class="align-middle"><%= order.customer.first_name %><%= order.customer.last_name %></td>
+          <td class="align-middle"><%= order.customer.last_name %><%= order.customer.first_name %></td>
           <td class="align-middle"><%= order.order_details.sum(:amount) %></td>
           <td class="align-middle"><%= order.status_i18n %></td>
         </tr>

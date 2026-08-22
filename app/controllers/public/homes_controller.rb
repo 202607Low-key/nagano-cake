@@ -1,4 +1,4 @@
-class Public::HomesController < ApplicationController
+class Public::HomesController < Public::ApplicationController
   allow_unauthenticated_access only: %i[ top about ]
   def top
   end

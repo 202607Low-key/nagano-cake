@@ -1,4 +1,4 @@
-class Public::CartItemsController < ApplicationController
+class Public::CartItemsController < Public::ApplicationController
   def index
     @cart_items = Current.customer.cart_items
     @total_price = 0
