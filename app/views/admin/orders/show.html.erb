@@ -3,7 +3,7 @@
 
   <div class="row mb-2">
     <div class="col-md-2 fw-bold">購入者</div>
-    <div class="col-md-9"><%= link_to "#{@order.customer.first_name} #{@order.customer.last_name}", admin_customer_path(@order.customer), class: "text-black" %></div>
+    <div class="col-md-9"><%= link_to "#{@order.customer.last_name} #{@order.customer.first_name}", admin_customer_path(@order.customer), class: "text-black" %></div>
   </div>
   <div class="row mb-2">
     <div class="col-md-2 fw-bold">注文日</div>

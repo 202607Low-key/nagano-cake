@@ -1,35 +1,75 @@
-<%= form_with model: @customer do |form| %>
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 d-inline-block fs-4">新規会員登録</h2>
 
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name %>
+  <% if @customer.errors.any? %>
+    <div class="text-danger mb-3">
+      <% @customer.errors.full_messages.each do |msg| %>
+        <ul>
+          <li class="mb-2"><%= msg %></li>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
 
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name %>
+  <div class="row justify-content-center">
+    <%= form_with model: @customer do |form| %>
 
-  <%= form.label :last_name_kana %>
-  <%= form.text_field :last_name_kana %>
+      <div class="row mb-3 align-items-center">
+        <div class="col-2 fw-bold">名前</div>
+        <%= form.label :last_name, "(姓)", class: "col-1 col-form-label text-end pe-0" %>
+        <div class="col-4">
+          <%= form.text_field :last_name, placeholder: "令和", class: "form-control" %>
+        </div>
 
-  <%= form.label :first_name_kana %>
-  <%= form.text_field :first_name_kana %>
+        <%= form.label :first_name, "(名)", class: "col-1 col-form-label text-end pe-0" %>
+        <div class="col-4">
+          <%= form.text_field :first_name, placeholder: "道子", class: "form-control" %>
+        </div>
+      </div>
 
-  <%= form.label :postal_code %>
-  <%= form.text_field :postal_code %>
+      <div class="row align-items-center">
+        <%= form.label :last_name_kana %>
+        <%= form.text_field :last_name_kana %>
 
-  <%= form.label :address %>
-  <%= form.text_field :address %>
+        <%= form.label :first_name_kana %>
+        <%= form.text_field :first_name_kana %>
+      </div>
 
-  <%= form.label :telephone_number %>
-  <%= form.text_field :telephone_number %>
+      <div class="row align-items-center">
+        <%= form.label :postal_code %>
+        <%= form.text_field :postal_code %>
+      </div>
 
-  <%= form.label :email_address %>
-  <%= form.email_field :email_address %>
+      <div class="row align-items-center">
+        <%= form.label :address %>
+        <%= form.text_field :address %>
+      </div>
 
-  <%= form.label :password %>
-  <%= form.password_field :password %>
+      <div class="row align-items-center">
+        <%= form.label :telephone_number %>
+        <%= form.text_field :telephone_number %>
+      </div>
 
-  <%= form.label :password_confirmation %>
-  <%= form.password_field :password_confirmation %>
+      <div class="row align-items-center">
+        <%= form.label :email_address %>
+        <%= form.email_field :email_address %>
+      </div>
 
-  <%= form.submit %>
+      <div class="row align-items-center">
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+      </div>
 
-<% end %>
+      <div class="row align-items-center">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation %>
+      </div>
+
+      <div class="row align-items-center">
+      >
+
+    <% end %> </div>
+
+    </div>
+  </div>
+</div>
