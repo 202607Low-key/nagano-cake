@@ -1,3 +1,9 @@
+<%= image_tag @item.display_image(200, 200) %>
 <%= @item.name %>
 <%= @item.price %>
 <%= @item.introduction %>
+<%= form_with url: cart_items_path, scope: :cart_item do |form| %>
+  <%= form.select :amount, 1..10 %>
+  <%= form.hidden_field :item_id, value: @item.id %>
+  <%= form.submit "カートに入れる" %>
+<% end %>
