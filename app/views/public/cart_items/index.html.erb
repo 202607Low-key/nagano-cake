@@ -2,8 +2,8 @@
   <thead>
     <tr>
       <th>商品名</th>
-      <th>数量</th>
       <th>単価(税込)</th>
+      <th>数量</th>
       <th>小計</th>
     </tr>
   </thead>
@@ -11,8 +11,8 @@
     <% @cart_items.each do |cart_item| %>
       <tr>
         <td><%= cart_item.item.name %></td>
-        <td><%= cart_item.amount %></td>
         <td><%= cart_item.item.with_tax_price %></td>
+        <td><%= cart_item.amount %></td>
         <td><%= cart_item.subtotal %></td>
         <td>
           <%= form_with model: cart_item do |form| %>
