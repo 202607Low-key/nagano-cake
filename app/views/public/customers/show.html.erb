@@ -1,4 +1,9 @@
-<p>お名前: <%= @customer.last_name %> <%= @customer.first_name %></p>
-<p>メールアドレス: <%= @customer.email_address %></p>
-<%= link_to "登録情報編集", customers_information_edit_path %>
-<%= link_to "退会はこちら", customers_unsubscribe_path %>
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 d-inline-block fs-4">マイページ</h2>
+  <p class="mb-1">お名前: <%= @customer.last_name %> <%= @customer.first_name %></p>
+  <p class="mb-4">メールアドレス: <%= @customer.email_address %></p>
+  <%= link_to "登録情報編集", customers_information_edit_path, class: "btn btn-primary btn-sm" %>
+  <%= link_to "配送先一覧", addresses_path, class: "btn btn-primary btn-sm" %>
+  <%= link_to "注文履歴", orders_path, class: "btn btn-secondary btn-sm" %>
+  <%= link_to "退会はこちら", customers_unsubscribe_path, class: "btn btn-danger btn-sm" %>
+</div>
