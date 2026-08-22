@@ -1,2 +1,77 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 d-inline-block fs-4">注文履歴詳細</h2>
+
+  <div class="row d-flex gap-1 mb-2">
+    <div class="col-md-7">
+      <h6 class="fw-bold mb-2 p-0">注文情報</h6>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="bg-light">注文日</th>
+            <td class="align-middle"><%= l(@order.created_at.to_date) %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">配送先</th>
+            <td class="align-middle">
+              〒<%= @order.postal_code %><br>
+              <%= @order.address %><br>
+              <%= @order.name %>
+            </td>
+          </tr>
+          <tr>
+            <th class="bg-light">支払方法</th>
+            <td class="align-middle"><%= @order.payment_method_i18n %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">ステータス</th>
+            <td class="align-middle"><%= @order.status_i18n %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <h6 class="fw-bold mb-2 p-0">請求情報</h6>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="bg-light">商品合計</th>
+            <td class="align-middle"><%= number_with_delimiter(@order.total_payment - @order.shipping_cost) %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">配送料</th>
+            <td class="align-middle"><%= number_with_delimiter(@order.shipping_cost) %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">ご請求額</th>
+            <td class="align-middle"><%= number_with_delimiter(@order.total_payment) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <h6 class="fw-bold mb-2 p-0">注文内容</h6>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="bg-light">商品</th>
+            <th class="bg-light">単価（税込）</th>
+            <th class="bg-light">個数</th>
+            <th class="bg-light">小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |detail| %>
+            <tr>
+              <td class="align-middle"><%= detail.item.name %></td>
+              <td class="align-middle"><%= number_with_delimiter(detail.price) %></td>
+              <td class="align-middle"><%= detail.amount %></td>
+              <td class="align-middle"><%= number_with_delimiter(detail.price * detail.amount) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   scope module: 'public' do
-    resource :session, only: [ :new, :create, :destroy ]
+    resource :session, only: [ :create, :destroy ]
     resources :passwords, param: :token, only: [ :new, :create, :edit, :update ]
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     get 'customers/sign_up', to: 'registrations#new'
     post 'customers', to: 'registrations#create'
-
+    
+    get 'customers/sign_in', to: 'sessions#new'
     get 'customers/my_page', to: 'customers#show'
     get 'customers/information/edit', to: 'customers#edit'
     patch 'customers/information', to: 'customers#update'

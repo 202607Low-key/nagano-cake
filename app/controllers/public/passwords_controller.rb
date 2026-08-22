@@ -10,7 +10,7 @@ class Public::PasswordsController < Public::ApplicationController
       PasswordsMailer.reset(customer).deliver_later
     end
 
-    redirect_to new_session_path, notice: "Password reset instructions sent (if customer with that email address exists)."
+    redirect_to customers_sign_in_path, notice: "Password reset instructions sent (if customer with that email address exists)."
   end
 
   def edit
@@ -18,7 +18,7 @@ class Public::PasswordsController < Public::ApplicationController
 
   def update
     if @customer.update(params.permit(:password, :password_confirmation))
-      redirect_to new_session_path, notice: "Password has been reset."
+      redirect_to customers_sign_in_path, notice: "Password has been reset."
     else
       redirect_to edit_password_path(params[:token]), alert: "Passwords did not match."
     end

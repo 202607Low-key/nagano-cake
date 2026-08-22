@@ -8,7 +8,7 @@
         <%= link_to "About", about_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
         <%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
         <%= link_to "新規登録", customers_sign_up_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
-        <%= link_to "ログイン", new_session_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
+        <%= link_to "ログイン", customers_sign_in_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
       </nav>
 
       <%= form_with url: "#", method: :get, class: "ms-auto header-search" do %>
