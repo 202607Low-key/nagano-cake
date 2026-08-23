@@ -1,0 +1,18 @@
+.hero-banner {
+  background-image: url("hero.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 320px;
+  border: 1px solid #dee2e6;
+}
+
+.hero-message {
+  max-width: 480px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.new-item-placeholder {
+  aspect-ratio: 1 / 1;
+}

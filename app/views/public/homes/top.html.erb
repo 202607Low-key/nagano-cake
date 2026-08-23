@@ -1,2 +1,49 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row mb-4 align-items-center">
+    <div class="col-md-2 mb-4">
+      <div class="border">
+        <div class="bg-light fw-bold px-3 py-2 border-bottom text-center">ジャンル検索</div>
+        <ul class="list-unstyled mb-0">
+          <% @genres.each do |genre| %>
+            <li class="px-3 py-2">
+              <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-decoration-none text-dark small" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-7 offset-1 mb-4">
+      <div class="hero-banner d-flex align-items-center justify-content-center">
+        <div class="p-4 hero-message">
+          <p class="mb-0">ようこそ、ながのCAKEへ！</p>
+          <p class="mb-0">このサイトは、ケーキ販売のECサイトになります。</p>
+          <p class="mb-0">会員でない方も商品の閲覧はできますが、</p>
+          <p class="mb-0">購入には会員登録が必要になります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="offset-3">
+    <h2 class="fw-bold mb-3">新着商品</h2>
+    <div class="row">
+      <% @new_items.each do |item| %>
+        <div class="col-md-3 col-6 mb-4">
+          <%= link_to item_path(item), class: "text-decoration-none text-dark" do %>
+            <% if item.image.attached? %>
+              <%= image_tag item.image.variant(resize_to_limit: [300, 300]), class: "img-fluid mb-2" %>
+            <% else %>
+              <div class="border new-item-placeholder mb-2"></div>
+            <% end %>
+            <div><%= item.name %></div>
+            <div>￥<%= number_with_delimiter(item.price) %></div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="text-end mb-4">
+      <%= link_to "全ての商品を見る >", items_path, class: "text-primary" %>
+    </div>
+  </div>
+</div>
