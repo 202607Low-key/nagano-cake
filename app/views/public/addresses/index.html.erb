@@ -1,18 +1,39 @@
-<% @addresses.each do |address| %>
-  <p><%= address.name %> / <%= address.postal_code %> / <%= address.address %></p>
-  <%= link_to "編集", edit_address_path(address) %>
-  <%= button_to "削除", address_path(address), method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
-<% end %>
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 d-inline-block fs-4">配送先一覧</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>宛名</th>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @addresses.each do |address| %>
+        <tr>
+          <td><%= address.name %></td>
+          <td><%= address.postal_code %></td>
+          <td><%= address.address %></td>
+          <td>
+            <%= link_to "編集", edit_address_path(address) %>
+            <%= button_to "削除", address_path(address), method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= form_with model: Current.customer.addresses.new do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form_with model: Current.customer.addresses.new do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
 
-  <%= form.label :postal_code %>
-  <%= form.text_field :postal_code %>
+    <%= form.label :postal_code %>
+    <%= form.text_field :postal_code %>
 
-  <%= form.label :address %>
-  <%= form.text_field :address %>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
 
-  <%= form.submit "登録" %>
-<% end %>
+    <%= form.submit "登録" %>
+  <% end %>
+</div>
