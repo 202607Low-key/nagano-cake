@@ -1,9 +1,29 @@
-<%= image_tag @item.display_image(200, 200) %>
-<%= @item.name %>
-<%= @item.price %>
-<%= @item.introduction %>
-<%= form_with url: cart_items_path, scope: :cart_item do |form| %>
-  <%= form.select :amount, 1..10 %>
-  <%= form.hidden_field :item_id, value: @item.id %>
-  <%= form.submit "カートに入れる" %>
-<% end %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12 col-md-2 mb-4">
+      <%= render "public/shared/genre_sidebar" %>
+    </div>
+
+    <div class="col-12 col-md-10">
+      <div class="row gap-md-3">
+        <div class="col-12 col-md-4">
+          <%= image_tag @item.display_image(300, 300), class: "img-fluid mb-3" %>
+        </div>
+        <div class="col-12 col-md-7">
+          <h3 class="mb-3"><%= @item.name %></h3>
+          <div class="mb-5"><%= @item.introduction %></div>
+          <p class="fs-4 fw-bold mb-4">
+            ￥<%= number_with_delimiter(@item.with_tax_price) %>
+            <span class="fs-6 fw-normal">(税込)</span>
+          </p>
+          
+          <%= form_with url: cart_items_path, scope: :cart_item, class: "d-flex align-items-center gap-3" do |form| %>
+            <%= form.select :amount, (1..10), { prompt: "個数選択" }, class: "form-select w-auto" %>
+            <%= form.hidden_field :item_id, value: @item.id %>
+            <%= form.submit "カートに入れる", class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
