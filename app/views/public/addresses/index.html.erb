@@ -1,39 +1,43 @@
 <div class="container">
   <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 d-inline-block fs-4">配送先一覧</h2>
-  <table>
+  <%= form_with model: Address.new, url: addresses_path do |form| %>
+    <div class="row mb-3 align-items-center">
+      <%= form.label :postal_code, "郵便番号", class: "col-2 col-form-label fw-bold" %>
+      <div class="col-2">
+        <%= form.text_field :postal_code, class: "form-control px-0" %>
+      </div>
+      <%= form.label :address, "住所", class: "col-1 col-form-label fw-bold" %>
+      <div class="col-4">
+        <%= form.text_field :address, class: "form-control px-0" %>
+      </div>
+      <%= form.label :name, "宛名", class: "col-1 col-form-label fw-bold" %>
+      <div class="col-2">
+        <%= form.text_field :name, class: "form-control px-0" %>
+      </div>
+    </div>
+    <%= form.submit "登録", class: "btn btn-primary mb-4" %>
+  <% end %>
+  <table class="table table-bordered">
     <thead>
       <tr>
-        <th>宛名</th>
-        <th>郵便番号</th>
-        <th>住所</th>
-        <th>操作</th>
+        <th class="bg-light">郵便番号</th>
+        <th class="bg-light">住所</th>
+        <th class="bg-light">宛名</th>
+        <th class="bg-light"></th>
       </tr>
     </thead>
     <tbody>
       <% @addresses.each do |address| %>
         <tr>
-          <td><%= address.name %></td>
-          <td><%= address.postal_code %></td>
-          <td><%= address.address %></td>
-          <td>
-            <%= link_to "編集", edit_address_path(address) %>
-            <%= button_to "削除", address_path(address), method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
+          <td class="align-middle"><%= address.postal_code %></td>
+          <td class="align-middle"><%= address.address %></td>
+          <td class="align-middle"><%= address.name %></td>
+          <td class="align-middle">
+            <%= link_to "編集", edit_address_path(address), class: "btn btn-primary btn-sm" %>
+            <%= button_to "削除", address_path(address), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
-  <%= form_with model: Current.customer.addresses.new do |form| %>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-
-    <%= form.label :postal_code %>
-    <%= form.text_field :postal_code %>
-
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-
-    <%= form.submit "登録" %>
-  <% end %>
 </div>
