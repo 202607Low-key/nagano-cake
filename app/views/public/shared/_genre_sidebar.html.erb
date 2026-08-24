@@ -1,0 +1,10 @@
+<div class="border">
+  <div class="bg-light fw-bold px-3 py-2 border-bottom text-center">ジャンル検索</div>
+  <ul class="list-unstyled mb-0">
+    <% Genre.all.each do |genre| %>
+      <li class="px-3 py-2">
+        <%= genre.name %>
+      </li>
+    <% end %>
+  </ul>
+</div>

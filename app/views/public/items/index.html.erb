@@ -1,7 +1,29 @@
-<% @items.each do |item| %>
-  <%= image_tag item.display_image(200, 200) %>
-  <%= link_to item.name, item_path(item) %>
-  <p><%= item.price %>円</p>
-<% end %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-2 mb-4">
+      <%= render "public/shared/genre_sidebar" %>
+    </div>
 
-<%= paginate @items %>
+    <div class="col-md-9">
+      <h2 class="fw-bold mb-3">
+        商品一覧
+        <span class="fs-6 fw-normal">(全<%= @items.total_count %>件)</span>
+      </h2>
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="col-6 col-lg-3 mb-4">
+            <%= link_to item_path(item), class: "text-decoration-none text-dark" do %>
+              <%= image_tag item.display_image(200, 200), class: "mb-2" %>
+              <div><%= item.name %></div>
+              <div>￥<%= number_with_delimiter(item.price) %></div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="d-flex justify-content-center mt-4">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>
