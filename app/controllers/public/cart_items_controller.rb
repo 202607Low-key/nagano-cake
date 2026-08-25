@@ -9,7 +9,7 @@ class Public::CartItemsController < Public::ApplicationController
     existing_cart_item = Current.customer.cart_items.find_by(item_id: cart_item_params[:item_id])
 
     if existing_cart_item
-      existing_cart_item.update(amount: existing_cart_item.amount + cart_item_params[:amount])
+      existing_cart_item.update(amount: existing_cart_item.amount + cart_item_params[:amount].to_i)
     else
       @cart_item.save
     end
@@ -22,7 +22,7 @@ class Public::CartItemsController < Public::ApplicationController
     if @cart_item.update(cart_item_params)
       redirect_to cart_items_path
     else
-      render :index
+      redirect_to cart_items_path, alert: "更新に失敗しました。"
     end
   end
 
