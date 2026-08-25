@@ -5,51 +5,52 @@
     <div class="col-1 fw-bold">名前</div>
       <%= form.label :last_name, "(姓)", class: "col-1 col-form-label text-end pe-0" %>
     <div class="col-4">
-      <%= form.text_field :last_name, placeholder: "令和", class: "form-control px-0" %>
+      <%= form.text_field :last_name, class: "form-control px-0" %>
     </div>
       <%= form.label :first_name, "(名)", class: "col-1 col-form-label text-end pe-0" %>
     <div class="col-4">
-      <%= form.text_field :first_name, placeholder: "道子", class: "form-control px-0" %>
+      <%= form.text_field :first_name, class: "form-control px-0" %>
     </div>
   </div>
   <div class="row mb-3 align-items-center">
     <div class="col-1 fw-bold">フリガナ</div>
     <%= form.label :last_name_kana, "(セイ)", class: "col-1 col-form-label text-end pe-0" %>
     <div class="col-4">
-      <%= form.text_field :last_name_kana, placeholder: "レイワ", class: "form-control px-0" %>
+      <%= form.text_field :last_name_kana, class: "form-control px-0" %>
     </div>
     <%= form.label :first_name_kana, "(メイ)", class: "col-1 col-form-label text-end pe-0" %>
     <div class="col-4">
-      <%= form.text_field :first_name_kana, placeholder: "ミチコ", class: "form-control px-0" %>
+      <%= form.text_field :first_name_kana, class: "form-control px-0" %>
     </div>
   </div>
   <div class="row mb-3 align-items-center">
     <%= form.label :email_address, class: "col-2 col-form-label fw-bold" %>
     <div class="col-4">
-      <%= form.email_field :email_address, placeholder: "sample@example.com", class: "form-control px-0" %>
+      <%= form.email_field :email_address, class: "form-control px-0" %>
     </div>
   </div>
   <div class="row mb-3 align-items-center">
-    <%= form.label :postal_code, "郵便番号(ハイフンなし)", class: "col-2 col-form-label fw-bold" %>
+    <%= form.label :postal_code, "郵便番号", class: "col-2 col-form-label fw-bold" %>
     <div class="col-4">
-      <%= form.text_field :postal_code, placeholder: "0000000", class: "form-control px-0" %>
+      <%= form.text_field :postal_code, class: "form-control px-0" %>
     </div>
   </div>
   <div class="row mb-3 align-items-center">
-  <%= form.label :address, class: "col-2 col-form-label fw-bold" %>
+  <%= form.label :address, "住所", class: "col-2 col-form-label fw-bold" %>
     <div class="col-9">
-      <%= form.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control px-0" %>
+      <%= form.text_field :address, class: "form-control px-0" %>
     </div>
   </div>
   <div class="row mb-3 align-items-center">
-    <%= form.label :telephone_number, "電話番号(ハイフンなし)", class: "col-2 col-form-label fw-bold" %>
+    <%= form.label :telephone_number, "電話番号", class: "col-2 col-form-label fw-bold" %>
       <div class="col-4">
-      <%= form.text_field :telephone_number, placeholder: "0000000000", class: "form-control px-0" %>
+      <%= form.text_field :telephone_number, class: "form-control px-0" %>
     </div>
   </div>
   <div class="row mb-4">
     <div class="col-4 offset-2">
-      <%= form.submit "更新", class: "btn btn-success col-6" %>
+      <%= form.submit "更新", class: "btn btn-success col-3 me-2" %>
+      <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger col-3" %>
     </div>
   </div>
 <% end %>
