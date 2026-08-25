@@ -1,4 +1,40 @@
-<p>お名前: <%= @customer.last_name %> <%= @customer.first_name %></p>
-<p>メールアドレス: <%= @customer.email_address %></p>
-<%= link_to "登録情報編集", customers_information_edit_path %>
-<%= link_to "退会はこちら", customers_unsubscribe_path %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-3 d-inline-block fs-4">マイページ</h2>
+
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="bg-light">氏名</th>
+            <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">カナ</th>
+            <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">メールアドレス</th>
+            <td><%= @customer.email_address %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">郵便番号</th>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">住所</th>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <th class="bg-light">電話番号</th>
+            <td><%= @customer.telephone_number %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <%= link_to "編集", customers_information_edit_path, class: "btn btn-primary" %>
+      <%= link_to "配送先一覧", addresses_path, class: "btn btn-primary" %>
+      <%= link_to "注文履歴", orders_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
