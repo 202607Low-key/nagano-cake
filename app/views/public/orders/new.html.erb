@@ -1,56 +1,63 @@
 <div class="container">
-  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 d-inline-block fs-4">注文情報入力</h2>
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 ms-5 d-inline-block fs-4">注文情報入力</h2>
 
-  <%= form_with model: @order, url: confirm_orders_path do |f| %>
+  <%= form_with model: @order, url: confirm_orders_path, local: true do |f| %>
 
     <h5 class="fw-bold mb-3">支払方法</h5>
     <div class="mb-4">
-      <div class="form-check">
+      <div class="form-check ms-4">
         <%= f.radio_button :payment_method, :credit_card, checked: true, class: "form-check-input" %>
         <%= f.label :payment_method_credit_card, "クレジットカード", class: "form-check-label" %>
       </div>
-      <div class="form-check">
-        <%= f.radio_button :payment_method, :transfer, checked: true, class: "form-check-input" %>
+      <div class="form-check ms-4">
+        <%= f.radio_button :payment_method, :transfer, checked: false, class: "form-check-input" %>
         <%= f.label :payment_method_transfer, "銀行振込", class: "form-check-label" %>
       </div>
     </div>
 
     <h5 class="fw-bold mb-3">お届け先</h5>
 
-    <div class="form-check mb-2">
+    <div class="form-check ms-4 mb-2">
       <%= radio_button_tag :delivery_type, "my_address", true, class: "form-check-input" %>
-      <%= label_tag :delivery_type_my_address, "ご自身の住所", class: "form-check-label" %>
+      <%= label_tag :delivery_type_my_address, "ご自身の住所", class: "form-check-label mb-1" %>
       <div class="ms-4">
-        〒<%= current_customer.postal_code %> <%= current_cusstomer.address %><br>
-        <%= current_cusstomer.last_name %> <%= current_customer.first_name %>
+        〒<%= current_customer.postal_code %> <%= current_customer.address %><br>
+        <%= current_customer.last_name %> <%= current_customer.first_name %>
       </div>
     </div>
 
-    <div class="form-check mb-2 d-flex align-items-center gap-2">
+    <div class="form-check ms-4 mb-2 align-items-center gap-2">
       <%= radio_button_tag :delivery_type, "registered_address", false, class: "form-check-input" %>
-      <%= label_tag :delivery_type_registered_address, "登録済住所から選択", class: "form-check-label" %>
-      <%= select_tag :address_id, options_from_collection_for_select(@addresses, :id, ->(a) { "〒#{a.postal_code} #{a.address}  #{a.name}" }), class: "form-select w-auto" %>
+      <%= label_tag :delivery_type_registered_address, "登録済住所から選択", class: "form-check-label mb-2" %>
+      <%= select_tag :address_id, options_from_collection_for_select(@addresses, :id, ->(a) { "〒#{a.postal_code} #{a.address}  #{a.name}" }), class: "form-select w-75 ms-4" %>
     </div>
 
-    <div class="form-check mb-4">
+    <div class="form-check ms-4 mb-4">
       <%= radio_button_tag :delivery_type, "new_address", false, class: "form-check-input" %>
       <%= label_tag :delivery_type_new_address, "新しいお届け先", class: "form-check-label" %>
 
       <div class="row mb-2 mt-2 ms-1 align-items-center">
-        <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-2 col-form-label" %>
+        <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-3 col-form-label" %>
         <div class="col-4">
           <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control" %>
         </div>
       </div>
-
+      <div class="row mb-2 ms-1 align-items-center">
+        <%= f.label :address, "住所", class: "col-3 col-form-label" %>
+        <div class="col-6">
+          <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control" %>
+        </div>
+      </div>
       <div class="row mb-2 mt-2 ms-1 align-items-center">
-        <%= f.label :name, "宛名", class: "col-2 col-form-label" %>
+        <%= f.label :name, "宛名", class: "col-3 col-form-label" %>
         <div class="col-4">
           <%= f.text_field :name, placeholder: "令和道子", class: "form-control" %>
         </div>
       </div>
     </div>
 
-    <%= f.submit "確認画面へ進む", class: "btn btn-primary px-4" %>
+    <div class="text-center">
+      <%= f.submit "確認画面へ進む", class: "btn btn-primary px-4" %>
+    </div>
   <% end %>
 </div>
