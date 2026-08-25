@@ -24,6 +24,7 @@ end
     customer.telephone_number = "0368694700"
     customer.is_active = true
   end
+end
 
 customers = Customer.all
 items = Item.where(is_active: true)
@@ -61,4 +62,17 @@ items = Item.where(is_active: true)
 
   order.update!(total_payment: total + order.shipping_cost)
 end
+
+sample_addresses = [
+  { postal_code: "244-0812", address: "神奈川県横浜市戸塚区柏尾町3-9-10", name: "梅木匠" },
+  { postal_code: "400-1114", address: "山梨県甲斐市打返4-5-19", name: "小沢時男" },
+  { postal_code: "160-0022", address: "東京都新宿区新宿2-5-10成信ビル4階", name: "鈴木太郎" }
+]
+
+customers.each_with_index do |customer, i|
+  sample = sample_addresses[i % sample_addresses.size]
+
+  Address.find_or_create_by!(customer: customer, postal_code: sample[:postal_code], address: sample[:address]) do |addr|
+    addr.name = sample[:name]
+  end
 end
