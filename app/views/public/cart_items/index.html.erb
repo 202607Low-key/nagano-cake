@@ -1,30 +1,37 @@
-<table border="1" style="border-collapse: collapse;">
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価(税込)</th>
-      <th>数量</th>
-      <th>小計</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cart_items.each do |cart_item| %>
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 d-inline-block fs-4">カート</h2>
+  <table class="table table-bordered">
+    <thead>
       <tr>
-        <td><%= cart_item.item.name %></td>
-        <td><%= cart_item.item.with_tax_price %></td>
-        <td><%= cart_item.amount %></td>
-        <td><%= cart_item.subtotal %></td>
-        <td>
-          <%= form_with model: cart_item do |form| %>
-            <%= form.select :amount, 1..10 %>
-            <%= form.submit "更新" %>
-          <% end %>
-        </td>
-        <td><%= button_to "取り消し", cart_item_path(cart_item), method: :delete %></td>
+        <th class="bg-light">商品名</th>
+        <th class="bg-light">単価(税込)</th>
+        <th class="bg-light">数量</th>
+        <th class="bg-light">小計</th>
       </tr>
-      <% @total_price += cart_item.subtotal %>
-    <% end %>
-  </tbody>
-</table>
-<p>合計金額: <%= @total_price %>円</p>
-<%= button_to "カートを空にする", all_destroy_cart_items_path, method: :delete %>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.with_tax_price %></td>
+          <td><%= cart_item.amount %></td>
+          <td><%= cart_item.subtotal %></td>
+          <td>
+            <%= form_with model: cart_item do |form| %>
+              <%= form.select :amount, 1..10 %>
+                <%= form.submit "更新", class: "btn btn-primary btn-sm" %>
+              <% end %>
+          </td>
+          <td><%= button_to "取り消し", cart_item_path(cart_item), method: :delete, class: "btn btn-danger btn-sm" %></td>
+        </tr>
+        <% @total_price += cart_item.subtotal %>
+      <% end %>
+    </tbody>
+  </table>
+  <p>合計金額: <%= @total_price %>円</p>
+  <div class="d-flex gap-2">
+    <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+    <%= link_to "注文情報入力に進む", new_order_path, class: "btn btn-success" %>
+    <%= button_to "カートを空にする", all_destroy_cart_items_path, method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>
