@@ -29,5 +29,9 @@
     </tbody>
   </table>
   <p>合計金額: <%= @total_price %>円</p>
-  <%= button_to "カートを空にする", all_destroy_cart_items_path, method: :delete, class: "btn btn-danger" %>
+  <div class="d-flex gap-2">
+    <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+    <%= link_to "注文情報入力に進む", new_order_path, class: "btn btn-success" %>
+    <%= button_to "カートを空にする", all_destroy_cart_items_path, method: :delete, class: "btn btn-danger" %>
+  </div>
 </div>
