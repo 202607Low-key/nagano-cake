@@ -16,3 +16,12 @@
 .new-item-placeholder {
   aspect-ratio: 1 / 1;
 }
+
+.label-width {
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.complete-message {
+  min-height: 60vh;
+}
