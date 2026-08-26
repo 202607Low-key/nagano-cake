@@ -1,21 +1,25 @@
 <div class="container">
-  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 d-inline-block fs-4">配送先一覧</h2>
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 ms-5 d-inline-block fs-4">配送先登録/一覧</h2>
   <%= form_with model: Address.new, url: addresses_path do |form| %>
     <div class="row mb-3 align-items-center">
-      <%= form.label :postal_code, "郵便番号", class: "col-2 col-form-label fw-bold" %>
-      <div class="col-2">
-        <%= form.text_field :postal_code, class: "form-control px-0" %>
-      </div>
-      <%= form.label :address, "住所", class: "col-1 col-form-label fw-bold" %>
-      <div class="col-4">
-        <%= form.text_field :address, class: "form-control px-0" %>
-      </div>
-      <%= form.label :name, "宛名", class: "col-1 col-form-label fw-bold" %>
-      <div class="col-2">
-        <%= form.text_field :name, class: "form-control px-0" %>
+      <%= form.label :postal_code, "郵便番号(ハイフンなし)", class: "col-3 col-form-label fw-bold" %>
+      <div class="col-3">
+        <%= form.text_field :postal_code, placeholder: "0000000", class: "form-control px-0" %>
       </div>
     </div>
-    <%= form.submit "登録", class: "btn btn-primary mb-4" %>
+    <div class="row mb-3 align-items-center">
+      <%= form.label :address, "住所", class: "col-3 col-form-label fw-bold" %>
+      <div class="col-7">
+        <%= form.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control px-0" %>
+      </div>
+    </div>
+    <div class="row mb-5 align-items-center">
+      <%= form.label :name, "宛名", class: "col-3 col-form-label fw-bold" %>
+      <div class="col-3">
+        <%= form.text_field :name, placeholder: "令和道子", class: "form-control px-0" %>
+      </div>
+      <%= form.submit "新規登録", class: "btn btn-success col-2 offset-3" %>
+    </div>
   <% end %>
   <table class="table table-bordered">
     <thead>
@@ -33,8 +37,10 @@
           <td class="align-middle"><%= address.address %></td>
           <td class="align-middle"><%= address.name %></td>
           <td class="align-middle">
-            <%= link_to "編集", edit_address_path(address), class: "btn btn-primary btn-sm" %>
-            <%= button_to "削除", address_path(address), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+            <div class="d-flex gap-2 px-2">
+              <%= link_to "編集する", edit_address_path(address), class: "btn btn-success btn-sm" %>
+              <%= button_to "削除する", address_path(address), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+            </div>
           </td>
         </tr>
       <% end %>

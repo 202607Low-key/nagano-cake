@@ -20,7 +20,7 @@ class OrderDetail < ApplicationRecord
     end
   end
 
-  def making_status_in_production
+  def making_status_in_production?
     making_status == "in_production"
   end
 

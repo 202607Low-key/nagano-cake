@@ -34,3 +34,5 @@ ja:
         payment_method: "支払方法"
       order_detail:
         making_status: "製作ステータス"
+      genre:
+        name: "ジャンル名"
