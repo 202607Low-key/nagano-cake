@@ -7,4 +7,14 @@ class Order < ApplicationRecord
 
   paginates_per 10
 
+  after_update :update_order_details_status, if: :saved_change_to_status?
+
+  private
+
+  def update_order_details_status
+    if payment_confirmed?
+      order_details.where(making_status: :not_startable).update_all(making_status: OrderDetail.making_statuses[:waiting_to_make])
+    end
+  end
+
 end
