@@ -1,29 +1,54 @@
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-2 py-1 mt-2 mb-5 d-inline-block fs-4">会員情報編集</h2>
 <%= form_with model: @customer, url: customers_information_path, method: :patch do |form| %>
-  
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name %>
-
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name %>
-
-  <%= form.label :last_name_kana %>
-  <%= form.text_field :last_name_kana %>
-
-  <%= form.label :first_name_kana %>
-  <%= form.text_field :first_name_kana %>
-
-  <%= form.label :email_address %>
-  <%= form.email_field :email_address %>
-
-  <%= form.label :telephone_number %>
-  <%= form.text_field :telephone_number %>
-
-  <%= form.label :postal_code %>
-  <%= form.text_field :postal_code %>
-
-  <%= form.label :address %>
-  <%= form.text_field :address %>
-
-  <%= form.submit "更新" %>
-
+  <div class="row mb-3 align-items-center">
+    <%= form.label :last_name, "氏名", class: "col-2 col-form-label fw-bold" %>
+    <div class="col-4">
+      <%= form.text_field :last_name, class: "form-control px-0" %>
+    </div>
+    <div class="col-4">
+      <%= form.text_field :first_name, class: "form-control px-0" %>
+    </div>
+  </div>
+  <div class="row mb-2 align-items-center">
+    <%= form.label :last_name_kana, "フリガナ", class: "col-2 col-form-label fw-bold" %>
+    <div class="col-4">
+      <%= form.text_field :last_name_kana, class: "form-control px-0" %>
+    </div>
+    <div class="col-4">
+      <%= form.text_field :first_name_kana, class: "form-control px-0" %>
+    </div>
+  </div>
+  <div class="row mb-2 align-items-center">
+    <%= form.label :postal_code, "郵便番号", class: "col-2 col-form-label fw-bold" %>
+    <div class="col-4">
+      <%= form.text_field :postal_code, class: "form-control px-0" %>
+    </div>
+  </div>
+  <div class="row mb-2 align-items-center">
+  <%= form.label :address, "住所", class: "col-2 col-form-label fw-bold" %>
+    <div class="col-9">
+      <%= form.text_field :address, class: "form-control px-0" %>
+    </div>
+  </div>
+  <div class="row mb-2 align-items-center">
+    <%= form.label :telephone_number, "電話番号", class: "col-2 col-form-label fw-bold" %>
+      <div class="col-4">
+      <%= form.text_field :telephone_number, class: "form-control px-0" %>
+    </div>
+  </div>
+  <div class="row mb-4 align-items-center">
+    <%= form.label :email_address, "メールアドレス", class: "col-2 col-form-label fw-bold" %>
+    <div class="col-4">
+      <%= form.email_field :email_address, class: "form-control px-0" %>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="d-flex justify-content-between col-9 offset-2">
+      <%= form.submit "編集内容を保存", class: "btn btn-success px-5 me-5" %>
+      <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger" %>
+    </div>
+  </div>
 <% end %>
+
+</div>

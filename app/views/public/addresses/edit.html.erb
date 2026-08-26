@@ -1,14 +1,24 @@
-<%= form_with model: @address do |form| %>
-
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-
-  <%= form.label :postal_code %>
-  <%= form.text_field :postal_code %>
-
-  <%= form.label :address %>
-  <%= form.text_field :address %>
-
-  <%= form.submit "更新" %>
-
-<% end %>
+<div class="container">
+  <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 ms-5 d-inline-block fs-4">配送先編集</h2>
+  <%= form_with model: @address, url: addresses_path, method: :patch do |form| %>
+    <div class="row mb-3 align-items-center">
+      <%= form.label :postal_code, "郵便番号(ハイフンなし)", class: "col-3 col-form-label fw-bold" %>
+      <div class="col-3">
+        <%= form.text_field :postal_code, class: "form-control px-0" %>
+      </div>
+    </div>
+    <div class="row mb-3 align-items-center">
+      <%= form.label :address, "住所", class: "col-3 col-form-label fw-bold" %>
+      <div class="col-7">
+        <%= form.text_field :address, class: "form-control px-0" %>
+      </div>
+    </div>
+    <div class="row mb-5 align-items-center">
+      <%= form.label :name, "宛名", class: "col-3 col-form-label fw-bold" %>
+      <div class="col-3">
+        <%= form.text_field :name, class: "form-control px-0" %>
+      </div>
+      <%= form.submit "変更内容を保存", class: "btn btn-success col-3 offset-3" %>
+    </div>
+  <% end %>
+</div>

@@ -13,7 +13,7 @@
         <% @items.each do |item| %>
           <div class="col-6 col-lg-3 mb-4">
             <%= link_to item_path(item), class: "text-decoration-none text-dark" do %>
-              <%= image_tag item.display_image(200, 200), class: "igm-fluid mb-2" %>
+              <%= image_tag item.display_image(200, 200), class: "img-fluid mb-2" %>
               <div><%= item.name %></div>
               <div>￥<%= number_with_delimiter(item.with_tax_price) %></div>
             <% end %>

@@ -1,3 +1,16 @@
-<p>本当に退会しますか？ <%= @customer.last_name %>さん</p>
-<%= button_to "退会する", customers_withdraw_path, method: :patch %>
-<%= link_to "キャンセル", customers_my_page_path %>
+<div class="container complete-message d-flex justify-content-center align-items-center">
+  <div class="row justify-content-center w-100">
+    <div class="col-md-10 text-center">
+      <p class="fs-5 mb-4 fw-bold">本当に退会しますか？</p>
+      <p class="mb-5">
+        退会すると、会員登録情報や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+      <div class="d-flex justify-content-center gap-4">
+        <%= link_to "退会しない", customers_my_page_path, class: "btn btn-primary px-4 py-1" %>
+        <%= button_to "退会する", customers_withdraw_path, method: :patch, class: "btn btn-danger px-4 py-1" %>
+      </div>
+    </div>
+  </div>
+</div>

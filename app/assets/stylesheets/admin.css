@@ -49,3 +49,7 @@
   max-width: 130px;
   flex: none;
 }
+
+.field_with_errors {
+  display: contents;
+}
