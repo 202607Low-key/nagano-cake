@@ -1,7 +1,7 @@
 class Public::SessionsController < Public::ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
   before_action :customer_state, only: %i[ create ]
-  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
+  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "後でもう一度お試しください。" }
 
   def new
     redirect_to root_path if authenticated_customer?
@@ -12,7 +12,7 @@ class Public::SessionsController < Public::ApplicationController
       start_new_session_for customer
       redirect_to after_authentication_url
     else
-      redirect_to customers_sign_in_path, alert: "Try another email address or password."
+      redirect_to customers_sign_in_path, alert: "メールアドレスまたはパスワードが正しくありません。"
     end
   end
 

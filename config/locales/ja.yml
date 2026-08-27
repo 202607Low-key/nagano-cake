@@ -29,6 +29,7 @@ ja:
         postal_code: "郵便番号"
         address: "住所"
         telephone_number: "電話番号"
+        password_confirmation: "確認用パスワード"
       order:
         status: "注文ステータス"
         payment_method: "支払方法"
