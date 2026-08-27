@@ -1,24 +1,33 @@
 <header class="border-bottom mb-4">
-  <div class="container-fluid d-flex justify-content-between align-items-center pt-3 pb-2 header-container">
-    <%= link_to admin_root_path, class: "border px-4 py-2 text-decoration-none text-dark fs-4" do %>
-      ながのCAKE
-    <% end %>
-    <div>
-      <nav class="d-flex align-items-center gap-4 mb-3">
-        <%= link_to "About", about_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
-        <%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
-        <%= link_to "新規登録", customers_sign_up_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
-        <%= link_to "ログイン", customers_sign_in_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
-      </nav>
-
-      <%= form_with url: "#", method: :get, class: "ms-auto header-search" do %>
-        <div class="input-group">
-          <%= text_field_tag :query, nil, class: "form-control rounded-0 p-1 border-end-0", placeholder: "Search" %>
-          <button class="search-btn rounded-0" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
+  <nav class="navbar navbar-expand-md">
+    <div class="container-fluid d-flex justify-content-between align-items-center pt-3 pb-2 header-container">
+      <%= link_to root_path, class: "border px-4 py-2 text-decoration-none text-dark fs-4 navbar-brand" do %>
+        ながのCAKE
       <% end %>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#guestNavbar" aria-controls="guestNavbar" aria-expanded="false" aria-label="メニューを開く">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse flex-grow-0 mt-3 mt-md-0" id="guestNavbar">
+        <div class="w-100">
+          <div class="d-flex flex-wrap justify-content-end align-items-center gap-2 gap-md-4 mb-3">
+            <%= link_to "About", about_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
+            <%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
+            <%= link_to "新規登録", customers_sign_up_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
+            <%= link_to "ログイン", customers_sign_in_path, class: "btn btn-outline-secondary px-0 py-2 header-nav-btn" %>
+          </div>
+
+          <%= form_with url: "#", method: :get, class: "ms-auto header-search" do %>
+            <div class="input-group">
+              <%= text_field_tag :query, nil, class: "form-control rounded-0 p-1 border-end-0", placeholder: "Search" %>
+              <button class="search-btn rounded-0" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
+  </nav>
 </header>
