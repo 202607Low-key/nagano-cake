@@ -9,7 +9,7 @@ class Public::RegistrationsController < Public::ApplicationController
     @customer = Customer.new(customer_params)
     if @customer.save
       start_new_session_for @customer
-      redirect_to root_path, notice: 'アカウントが作成されました。'
+      redirect_to customers_my_page_path, notice: 'アカウントが作成されました。'
     else
       render :new, status: :unprocessable_entity
     end
