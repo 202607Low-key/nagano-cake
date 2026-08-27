@@ -50,13 +50,13 @@
     </div>
   </div>
 
-  <div class="row mt-4 mb-4">
-    <div class="col-2 fw-bold">支払方法</div>
-    <div class="col-9"><%= @order.payment_method_i18n %></div>
+  <div class="d-flex gap-1 mt-4 mb-4">
+    <div class="fw-bold address-label-width">支払方法</div>
+    <div><%= @order.payment_method_i18n %></div>
   </div>
-  <div class="row mb-5">
-    <div class="col-2 fw-bold">お届け先</div>
-    <div class="col-9">
+  <div class="d-flex gap-1 mb-5">
+    <div class="fw-bold address-label-width">お届け先</div>
+    <div>
       〒<%= @order.postal_code %> <%= @order.address %><br>
       <%= @order.name %>
     </div>

@@ -1,12 +1,12 @@
 class Public::CartItemsController < Public::ApplicationController
   def index
-    @cart_items = Current.customer.cart_items
+    @cart_items = current_customer.cart_items
     @total_price = 0
   end
 
   def create
-    @cart_item = Current.customer.cart_items.new(cart_item_params)
-    existing_cart_item = Current.customer.cart_items.find_by(item_id: cart_item_params[:item_id])
+    @cart_item = current_customer.cart_items.new(cart_item_params)
+    existing_cart_item = current_customer.cart_items.find_by(item_id: cart_item_params[:item_id])
 
     if existing_cart_item
       existing_cart_item.update(amount: existing_cart_item.amount + cart_item_params[:amount].to_i)
@@ -18,7 +18,7 @@ class Public::CartItemsController < Public::ApplicationController
   end
 
   def update
-    @cart_item = Current.customer.cart_items.find(params[:id])
+    @cart_item = current_customer.cart_items.includes(item: { image_attachment: :blob })
     if @cart_item.update(cart_item_params)
       redirect_to cart_items_path
     else
@@ -27,13 +27,13 @@ class Public::CartItemsController < Public::ApplicationController
   end
 
   def destroy
-    @cart_item = Current.customer.cart_items.find(params[:id])
+    @cart_item = current_customer.cart_items.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path
   end
 
   def all_destroy
-    Current.customer.cart_items.destroy_all
+    current_customer.cart_items.destroy_all
     redirect_to cart_items_path
   end
 

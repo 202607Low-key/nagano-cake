@@ -21,7 +21,21 @@
   width: 50px;
   height: 50px;
   object-fit: cover;
-  
+}
+
+.cart-amount-select {
+  width: 70px;
+  flex: none;
+}
+
+.total-price-table {
+  width: 200px;
+}
+
+.total-price-value {
+  width: 110px;
+}
+
 .label-width {
   width: 100px;
   flex-shrink: 0;
@@ -29,4 +43,12 @@
 
 .complete-message {
   min-height: 60vh;
+}
+
+.address-label-width {
+  width: 80px;
+}
+
+.action-col {
+  width: 1%;
 }

@@ -9,7 +9,7 @@
         <th class="bg-light">注文商品</th>
         <th class="bg-light">支払金額</th>
         <th class="bg-light">ステータス</th>
-        <th class="bg-light">注文詳細</th>
+        <th class="bg-light text-nowrap action-col pe-5">注文詳細</th>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
           <td class="align-middle"><%= number_with_delimiter(order.total_payment) %>円</td>
           <td class="align-middle"><%= order.status_i18n %></td>
           <td class="align-middle text-center">
-            <%= link_to "表示する", order_path(order), class: "btn btn-primary btn-sm" %>
+            <%= link_to "表示する", order_path(order), class: "btn btn-primary btn-sm text-nowrap px-3" %>
           </td>
         </tr>
       <% end %>

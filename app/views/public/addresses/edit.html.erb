@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 ms-5 d-inline-block fs-4">配送先編集</h2>
-  <%= form_with model: @address, url: addresses_path, method: :patch do |form| %>
+  <%= form_with model: @address, url: address_path(@address), method: :patch do |form| %>
     <div class="row mb-3 align-items-center">
       <%= form.label :postal_code, "郵便番号(ハイフンなし)", class: "col-3 col-form-label fw-bold" %>
       <div class="col-3">

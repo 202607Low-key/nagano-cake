@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="bg-body-secondary rounded-0 px-3 py-1 mt-3 mb-5 ms-5 d-inline-block fs-4">配送先登録/一覧</h2>
-  <%= form_with model: Address.new, url: addresses_path do |form| %>
+  <%= form_with model: @address, url: addresses_path do |form| %>
     <div class="row mb-3 align-items-center">
       <%= form.label :postal_code, "郵便番号(ハイフンなし)", class: "col-3 col-form-label fw-bold" %>
       <div class="col-3">
@@ -27,7 +27,7 @@
         <th class="bg-light">郵便番号</th>
         <th class="bg-light">住所</th>
         <th class="bg-light">宛名</th>
-        <th class="bg-light"></th>
+        <th class="bg-light action-col"></th>
       </tr>
     </thead>
     <tbody>
@@ -38,8 +38,8 @@
           <td class="align-middle"><%= address.name %></td>
           <td class="align-middle">
             <div class="d-flex gap-2 px-2">
-              <%= link_to "編集する", edit_address_path(address), class: "btn btn-success btn-sm" %>
-              <%= button_to "削除する", address_path(address), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+              <%= link_to "編集する", edit_address_path(address), class: "btn btn-success btn-sm text-nowrap" %>
+              <%= button_to "削除する", address_path(address), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm text-nowrap" %>
             </div>
           </td>
         </tr>

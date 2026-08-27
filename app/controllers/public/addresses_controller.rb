@@ -1,32 +1,34 @@
 class Public::AddressesController < Public::ApplicationController
   def index
-    @addresses = Current.customer.addresses
+    @address = current_customer.addresses.new
+    @addresses = current_customer.addresses.reload
   end
 
   def edit
-    @address = Current.customer.addresses.find(params[:id])
+    @address = current_customer.addresses.find(params[:id])
   end
 
   def create
-    @address = Current.customer.addresses.new(address_params)
+    @address = current_customer.addresses.new(address_params)
     if @address.save
       redirect_to addresses_path
     else
-      render :index
+      @addresses = current_customer.addresses
+      render :index, status: :unprocessable_entity
     end
   end
 
   def update
-    @address = Current.customer.addresses.find(params[:id])
+    @address = current_customer.addresses.find(params[:id])
     if @address.update(address_params)
       redirect_to addresses_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @address = Current.customer.addresses.find(params[:id])
+    @address = current_customer.addresses.find(params[:id])
     @address.destroy
     redirect_to addresses_path
   end
