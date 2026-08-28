@@ -1,10 +1,6 @@
 <div class="container">
-  <div class="row mb-4 align-items-center">
-    <div class="col-md-2 mb-4">
-      <%= render "public/shared/genre_sidebar" %>
-    </div>
-
-    <div class="col-md-7 offset-1 mb-4">
+  <div class="row mb-4 justify-content-center">
+    <div class="col-md-9 mb-4">
       <div class="hero-banner d-flex align-items-center justify-content-center">
         <div class="p-4 hero-message">
           <p class="mb-0">ようこそ、ながのCAKEへ！</p>
@@ -15,23 +11,26 @@
       </div>
     </div>
   </div>
-  <div class="offset-3">
-    <h2 class="fw-bold mb-3">新着商品</h2>
-    <div class="row">
-      <% @new_items.each do |item| %>
-        <div class="col-md-3 col-6 mb-4">
-          <%= link_to item_path(item), class: "text-decoration-none text-dark" do %>
-            <% if item.image.attached? %>
-              <%= image_tag item.image.variant(resize_to_limit: [300, 300]), class: "img-fluid mb-2" %>
-            <% else %>
-              <div class="border new-item-placeholder mb-2"></div>
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+      <h2 class="fw-bold mb-3">新着商品</h2>
+      <div class="row">
+        <% @new_items.each do |item| %>
+          <div class="col-md-3 col-6 mb-4">
+            <%= link_to item_path(item), class: "text-decoration-none text-dark" do %>
+              <% if item.image.attached? %>
+                <%= image_tag item.image.variant(resize_to_limit: [300, 300]), class: "img-fluid mb-2" %>
+              <% else %>
+                <div class="border new-item-placeholder mb-2"></div>
+              <% end %>
+              <div><%= item.name %></div>
+              <div>￥<%= number_with_delimiter(item.price) %></div>
             <% end %>
-            <div><%= item.name %></div>
-            <div>￥<%= number_with_delimiter(item.price) %></div>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
+  </div>
 
     <div class="text-end mb-4">
       <%= link_to "全ての商品を見る >", items_path, class: "text-primary" %>
